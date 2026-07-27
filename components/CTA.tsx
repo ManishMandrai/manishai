@@ -1,44 +1,40 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function CTA() {
   return (
-    <section id="contact" className="bg-section">
-      <div className="mx-auto max-w-8xl px-6 py-24 lg:px-10 lg:py-28">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-2xl rounded-2xl border border-border bg-white px-8 py-16 text-center shadow-soft sm:px-16"
-        >
-          <h2 className="text-[30px] font-bold tracking-tight text-primary sm:text-[36px]">
-            Ready to automate your business?
-          </h2>
-          <p className="mt-4 text-[16px] font-medium leading-relaxed text-secondary">
-            Book a free strategy call and see how an AI assistant can work
-            for your business.
-          </p>
+    <section id="contact" className="bg-section py-24 md:py-28">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5 }}
+        className="container-content flex flex-col items-center rounded-3xl border border-border bg-white px-8 py-16 text-center shadow-soft md:py-20"
+      >
+        <h2 className="max-w-2xl text-3xl font-bold tracking-tight text-primary md:text-4xl">
+          Ready to Automate Your Business?
+        </h2>
+        <p className="mt-4 max-w-prose text-base leading-relaxed text-secondary">
+          Let&apos;s build an AI assistant that works while you focus on
+          growing your business.
+        </p>
 
-          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-            <a
-              href="mailto:hello@manishai.com"
-              className="rounded-lg bg-primary px-6 py-3 text-[15px] font-medium text-white shadow-softer transition-all hover:bg-black/85 active:scale-[0.98]"
-            >
-              Book Demo
-            </a>
-            <a
-              href="https://wa.me/"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-white px-6 py-3 text-[15px] font-medium text-primary transition-colors hover:bg-section"
-            >
-              <MessageCircle size={16} className="text-success" />
-              WhatsApp
-            </a>
-          </div>
-        </motion.div>
-      </div>
+        <div className="mt-8">
+          <motion.a
+            href="https://wa.me/918435428491"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ y: -1 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3 text-sm font-medium text-white shadow-soft transition-colors hover:bg-[#1fb959]"
+          >
+            <FaWhatsapp className="h-4 w-4" />
+            Chat on WhatsApp
+          </motion.a>
+        </div>
+      </motion.div>
     </section>
   );
 }

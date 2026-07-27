@@ -10,21 +10,30 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://manishai.com"),
-  title: "ManishAI — Never Miss Another Customer Again",
+  title: "ManishAI — AI Automation for Modern Businesses",
   description:
-    "AI assistants that answer enquiries, qualify leads, automate customer support and book appointments 24/7 — so your business never misses an opportunity.",
+    "I build AI assistants that answer customers, qualify leads, automate repetitive work and help businesses respond instantly, 24/7.",
+  keywords: [
+    "AI automation",
+    "AI receptionist",
+    "WhatsApp AI assistant",
+    "lead qualification",
+    "appointment booking automation",
+    "business automation",
+  ],
   openGraph: {
-    title: "ManishAI — AI Automation for Small Businesses",
+    title: "ManishAI — AI Automation for Modern Businesses",
     description:
-      "AI assistants that answer enquiries, qualify leads, automate customer support and book appointments 24/7.",
+      "I build AI assistants that answer customers, qualify leads, automate repetitive work and help businesses respond instantly, 24/7.",
+    url: "https://manishai.com",
+    siteName: "ManishAI",
     type: "website",
-    locale: "en_GB",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ManishAI — AI Automation for Small Businesses",
+    title: "ManishAI — AI Automation for Modern Businesses",
     description:
-      "AI assistants that answer enquiries, qualify leads, automate customer support and book appointments 24/7.",
+      "I build AI assistants that answer customers, qualify leads, automate repetitive work and help businesses respond instantly, 24/7.",
   },
   robots: {
     index: true,

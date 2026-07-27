@@ -10,25 +10,31 @@ const config: Config = {
       colors: {
         background: "#FFFFFF",
         section: "#FAFAFA",
-        card: "#FFFFFF",
-        border: "#EAEAEA",
-        primary: "#111111",
-        secondary: "#666666",
+        primary: "#111827",
+        secondary: "#6B7280",
         accent: "#2563EB",
-        success: "#16A34A",
+        border: "#E5E7EB",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "sans-serif"],
       },
       maxWidth: {
-        "8xl": "1440px",
+        content: "1200px",
+        prose: "640px",
       },
       boxShadow: {
-        soft: "0 1px 2px rgba(0,0,0,0.03), 0 8px 24px rgba(0,0,0,0.04)",
-        softer: "0 1px 3px rgba(0,0,0,0.02)",
+        soft: "0 1px 2px rgba(17, 24, 39, 0.04), 0 4px 16px rgba(17, 24, 39, 0.04)",
+        card: "0 1px 2px rgba(17, 24, 39, 0.04), 0 8px 24px rgba(17, 24, 39, 0.06)",
+        lift: "0 4px 12px rgba(17, 24, 39, 0.06), 0 16px 40px rgba(17, 24, 39, 0.08)",
       },
-      borderRadius: {
-        xl2: "1.25rem",
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+      },
+      animation: {
+        float: "float 6s ease-in-out infinite",
       },
     },
   },

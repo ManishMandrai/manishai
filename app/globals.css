@@ -8,40 +8,32 @@ html {
 
 body {
   background-color: #ffffff;
-  color: #111111;
-  font-feature-settings: "cv11", "ss01";
-  -webkit-font-smoothing: antialiased;
+  color: #111827;
 }
 
 ::selection {
-  background-color: #2563eb;
-  color: #ffffff;
+  background-color: rgba(37, 99, 235, 0.15);
 }
 
-/* Visible keyboard focus */
-a:focus-visible,
-button:focus-visible {
+.container-content {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-content {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+:focus-visible {
   outline: 2px solid #2563eb;
-  outline-offset: 3px;
-  border-radius: 6px;
-}
-
-/* Typing indicator dots used inside the hero chat mockup */
-@keyframes typingDot {
-  0%,
-  60%,
-  100% {
-    opacity: 0.2;
-    transform: translateY(0);
-  }
-  30% {
-    opacity: 1;
-    transform: translateY(-2px);
-  }
-}
-
-.typing-dot {
-  animation: typingDot 1.2s ease-in-out infinite;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {

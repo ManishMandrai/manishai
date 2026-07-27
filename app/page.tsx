@@ -1,9 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import SocialProof from "@/components/SocialProof";
 import Services from "@/components/Services";
 import HowItWorks from "@/components/HowItWorks";
 import About from "@/components/About";
+import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -12,10 +12,10 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <SocialProof />
       <Services />
       <HowItWorks />
       <About />
+      <FAQ />
       <CTA />
       <Footer />
     </main>

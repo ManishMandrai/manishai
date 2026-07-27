@@ -1,6 +1,6 @@
-# ManishAI
+# ManishAI — Landing Page
 
-Single-page marketing site for an AI automation consultancy, built with Next.js 15 (App Router), TypeScript, Tailwind CSS, Framer Motion and Lucide React.
+A premium, minimal landing page for an AI automation agency, built with Next.js 15 (App Router), TypeScript, Tailwind CSS, and Framer Motion.
 
 ## Getting started
 
@@ -9,29 +9,44 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000.
+Open [http://localhost:3000](http://localhost:3000).
+
+## Build for production
+
+```bash
+npm run build
+npm run start
+```
+
+## Deploy
+
+Ready for one-click deployment on [Vercel](https://vercel.com/new). No environment variables or backend required.
 
 ## Structure
 
 ```
 app/
-  layout.tsx       root layout, fonts, metadata
-  page.tsx          assembles the page from sections
-  globals.css       base styles, focus states, reduced-motion
+  layout.tsx      Root layout, fonts, SEO metadata
+  page.tsx        Assembles all sections
+  globals.css     Tailwind base + small global rules
 components/
   Navbar.tsx
   Hero.tsx
-  ChatMockup.tsx     browser + chat mockup used in the hero
-  SocialProof.tsx
+  WhatsAppCard.tsx
   Services.tsx
   HowItWorks.tsx
   About.tsx
+  FAQ.tsx
   CTA.tsx
   Footer.tsx
+lib/
+  data.ts         Copy and content used across components
 ```
 
-## Notes
+## Editing content
 
-- Replace the WhatsApp `https://wa.me/` links and `mailto:hello@manishai.com` with real contact details before deploying.
-- Replace the "Photo of Manish" placeholder in `components/About.tsx` with a real `next/image`.
-- Colors and type scale live in `tailwind.config.ts` under `theme.extend.colors`.
+All copy (nav links, services, steps, FAQ, chat messages) lives in `lib/data.ts` — edit it there rather than inside components.
+
+## Brand tokens
+
+Colors and type are defined in `tailwind.config.ts` under `theme.extend.colors` (background, section, primary, secondary, accent, border) and mapped to the Inter font via `next/font/google`.
