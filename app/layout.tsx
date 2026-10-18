@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import ChatWidget from "@/components/ChatWidget";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -50,6 +52,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className="font-sans antialiased bg-background text-primary">
         {children}
+        <ChatWidget />
       </body>
     </html>
   );
