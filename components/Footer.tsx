@@ -33,7 +33,7 @@ export default function Footer() {
                 </ul>
 
                 <p className="text-xs text-secondary">
-                    © {new Date().getFullYear()} Built by ManishAI
+                    © {new Date().getFullYear()} Built by Manish
                 </p>
             </div>
         </footer>
