@@ -32,10 +32,22 @@ export default function ChatWidget() {
   // Keep the latest state reachable from the window event listener below.
   const sendRef = useRef<(text: string) => void>(() => {});
   const messagesRef = useRef<Msg[]>([]);
+  const loadingRef = useRef(false);
+  const pendingRef = useRef<string | null>(null); // message waiting for the current reply to finish
   useEffect(() => {
     sendRef.current = send;
     messagesRef.current = messages;
+    loadingRef.current = loading;
   });
+
+  // If a button was clicked while a reply was loading, send it once that reply is done.
+  useEffect(() => {
+    if (!loading && pendingRef.current) {
+      const queued = pendingRef.current;
+      pendingRef.current = null;
+      sendRef.current(queued);
+    }
+  }, [loading]);
 
   // Any button on the page can open the chat via openChat() from lib/contact.ts
   useEffect(() => {
@@ -45,6 +57,10 @@ export default function ChatWidget() {
       if (!message) return;
       const lastUser = [...messagesRef.current].reverse().find((m) => m.role === "user");
       if (lastUser?.content === message) return; // don't repeat on double clicks
+      if (loadingRef.current) {
+        pendingRef.current = message; // reply still loading: send it right after
+        return;
+      }
       sendRef.current(message);
     };
     window.addEventListener("manishai:open-chat", onOpen);
