@@ -193,6 +193,12 @@ export default function ChatWidget() {
                   <Send className="h-4 w-4" />
                 </button>
               </form>
+              <p className="mt-2 text-center text-[11px] leading-snug text-secondary">
+                AI assistant. Chats are processed by an AI provider.{" "}
+                <a href="/privacy" target="_blank" className="underline hover:text-primary">
+                  Privacy
+                </a>
+              </p>
             </div>
           </motion.div>
         )}

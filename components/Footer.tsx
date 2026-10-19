@@ -33,7 +33,8 @@ export default function Footer() {
                 </ul>
 
                 <p className="text-xs text-secondary">
-                    © {new Date().getFullYear()} Built by Manish
+                    © {new Date().getFullYear()} Built by Manish ·{" "}
+                    <a href="/privacy" className="hover:text-primary">Privacy</a>
                 </p>
             </div>
         </footer>
