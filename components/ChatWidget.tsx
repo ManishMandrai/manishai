@@ -22,6 +22,34 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [teaser, setTeaser] = useState(false);
+
+  function dismissTeaser() {
+    setTeaser(false);
+    try {
+      sessionStorage.setItem("manishai:teaser", "1");
+    } catch {
+      /* storage can be blocked; ignore */
+    }
+  }
+
+  // Show a small "ask me" nudge a few seconds after load, once per visit.
+  useEffect(() => {
+    let seen = false;
+    try {
+      seen = sessionStorage.getItem("manishai:teaser") === "1";
+    } catch {
+      /* ignore */
+    }
+    if (seen) return;
+    const t = setTimeout(() => setTeaser(true), 4000);
+    return () => clearTimeout(t);
+  }, []);
+
+  // Opening the chat (by any route) retires the nudge.
+  useEffect(() => {
+    if (open) dismissTeaser();
+  }, [open]);
   const endRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -220,15 +248,61 @@ export default function ChatWidget() {
         )}
       </AnimatePresence>
 
+      {/* Nudge bubble */}
+      <AnimatePresence>
+        {teaser && !open && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 8, scale: 0.96 }}
+            transition={{ duration: 0.25 }}
+            className="fixed bottom-24 right-4 z-[60] flex max-w-[260px] items-start gap-2 rounded-2xl border border-border bg-white p-3.5 pr-2.5 shadow-lift sm:right-6"
+          >
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="text-left text-sm leading-snug text-primary"
+            >
+              <span className="font-semibold">Questions?</span> Ask our AI assistant. It
+              replies instantly.
+            </button>
+            <button
+              type="button"
+              onClick={dismissTeaser}
+              aria-label="Dismiss"
+              className="rounded-md p-1 text-secondary transition-colors hover:bg-section hover:text-primary"
+            >
+              <X className="h-3.5 w-3.5" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Launcher */}
       <motion.button
         onClick={() => setOpen((o) => !o)}
-        whileHover={{ y: -1 }}
+        whileHover={{ y: -2 }}
         whileTap={{ scale: 0.96 }}
         aria-label={open ? "Close chat" : "Open chat"}
         aria-expanded={open}
-        className="fixed bottom-5 right-4 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-lift sm:right-6"
+        className={`fixed bottom-5 right-4 z-[60] flex h-14 items-center justify-center gap-2.5 rounded-full shadow-lift sm:right-6 ${
+          open
+            ? "w-14 bg-white text-primary ring-1 ring-border"
+            : "min-w-14 bg-gradient-to-r from-accent to-[#7C3AED] px-4 text-white ring-2 ring-white/90 sm:px-5"
+        }`}
       >
-        {open ? <X className="h-5 w-5" /> : <MessageCircle className="h-5 w-5" />}
+        {open ? (
+          <X className="h-5 w-5" />
+        ) : (
+          <>
+            <MessageCircle className="h-6 w-6 fill-white/25" strokeWidth={2} />
+            <span className="hidden text-sm font-semibold sm:inline">Chat with our AI</span>
+            <span className="absolute -right-0.5 -top-0.5 flex h-3.5 w-3.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-70 motion-safe:animate-ping" />
+              <span className="relative inline-flex h-3.5 w-3.5 rounded-full border-2 border-white bg-emerald-500" />
+            </span>
+          </>
+        )}
       </motion.button>
     </>
   );
