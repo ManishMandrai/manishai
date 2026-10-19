@@ -55,6 +55,7 @@ export default function RootLayout({
       <body className="font-sans antialiased bg-background text-primary">
         {children}
         <ChatWidget />
+        <Analytics />
       </body>
     </html>
   );
